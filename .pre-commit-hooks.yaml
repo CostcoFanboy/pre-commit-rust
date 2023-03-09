@@ -1,0 +1,14 @@
+- id: fmt
+  name: fmt
+  description: Format rust files.
+  entry: cargo fmt
+  language: system
+  types: [rust]
+  pass_filenames: false
+- id: clippy
+  name: clippy
+  description: Rust wrapper for cargo check and extra clippy specific warnings
+  entry: cargo clippy
+  language: system
+  types: [rust]
+  pass_filenames: false
