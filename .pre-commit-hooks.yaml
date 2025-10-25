@@ -1,14 +1,34 @@
+- id: cargo-check
+  name: cargo-check
+  description: Check the package for compile errors.
+  entry: cargo check
+  language: system
+  types: [rust]
+  pass_filenames: false
 - id: fmt
-  name: fmt
-  description: Format rust files.
-  entry: cargo fmt
+  name: cargo-fmt
+  description: Format rust files with rustfmt.
+  entry: cargo fmt --all -- --check
   language: system
   types: [rust]
   pass_filenames: false
 - id: clippy
-  name: clippy
-  description: Rust wrapper for cargo check and extra clippy specific warnings
-  entry: cargo clippy
+  name: cargo-clippy
+  description: Run clippy linter on the package.
+  entry: cargo clippy --all-targets --all-features -- -D warnings
   language: system
   types: [rust]
+  pass_filenames: false
+- id: test
+  name: cargo-test
+  description: Run cargo test on the package.
+  entry: cargo test
+  language: system
+  types: [rust]
+  pass_filenames: false
+- id: audit
+  name: cargo-audit
+  description: Check for security vulnerabilities in dependencies.
+  entry: cargo audit
+  language: system
   pass_filenames: false
